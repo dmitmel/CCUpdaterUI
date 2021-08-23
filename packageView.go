@@ -7,6 +7,7 @@ import (
 	"github.com/20kdc/CCUpdaterUI/frenyard/integration"
 	"github.com/20kdc/CCUpdaterUI/middle"
 	"github.com/CCDirectLink/CCUpdaterCLI"
+	"regexp"
 )
 
 // ShowPackageView shows a dialog for a package.
@@ -52,6 +53,9 @@ func (app *upApplication) ShowPackageView(back framework.ButtonBehavior, pkg str
 	}
 
 	descriptionText := latestPkg.Metadata().Description() + "\n"
+
+	m1 := regexp.MustCompile(`(\\c\[[\d]\])`)
+	m1.ReplaceAllString(descriptionText, "")
 
 	buttons := []framework.UILayoutElement{}
 
