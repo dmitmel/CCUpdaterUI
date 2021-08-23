@@ -55,7 +55,7 @@ func (app *upApplication) ShowPackageView(back framework.ButtonBehavior, pkg str
 	descriptionText := latestPkg.Metadata().Description() + "\n"
 
 	m1 := regexp.MustCompile(`(\\c\[[\d]\])`)
-	m1.ReplaceAllString(descriptionText, "")
+	descriptionText = m1.ReplaceAllString(descriptionText, "")
 
 	buttons := []framework.UILayoutElement{}
 
