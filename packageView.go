@@ -53,6 +53,8 @@ func (app *upApplication) ShowPackageView(back framework.ButtonBehavior, pkg str
 
 	descriptionText := latestPkg.Metadata().Description() + "\n"
 
+	descriptionText = formatRegex.ReplaceAllString(descriptionText, "")
+
 	buttons := []framework.UILayoutElement{}
 
 	homepage := latestPkg.Metadata()["homepage"]

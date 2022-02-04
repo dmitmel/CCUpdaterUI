@@ -6,6 +6,7 @@ import (
 	"github.com/20kdc/CCUpdaterUI/frenyard/framework"
 	"github.com/20kdc/CCUpdaterUI/middle"
 	"github.com/CCDirectLink/CCUpdaterCLI"
+	"regexp"
 )
 
 type upApplication struct {
@@ -20,6 +21,8 @@ type upApplication struct {
 	upQueued chan func()
 	teleportSettings framework.SlideTransition
 }
+
+var formatRegex = regexp.MustCompile(`(\\c\[[\d]\])`)
 
 const upTeleportLen float64 = 0.25
 

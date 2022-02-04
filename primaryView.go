@@ -8,6 +8,7 @@ import (
 	"sort"
 	"strings"
 	"os"
+	"regexp"
 )
 
 type primaryViewPackageListSortable struct {
@@ -176,6 +177,7 @@ func (app *upApplication) ShowPrimaryView() {
 			status = latest.Metadata().Version().Original() + " available"
 		}
 		description := latest.Metadata().Description()
+		description = formatRegex.ReplaceAllString(description, "")
 		if description != "" {
 			status = description + "\n" + status
 		}
