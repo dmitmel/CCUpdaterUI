@@ -177,8 +177,7 @@ func (app *upApplication) ShowPrimaryView() {
 			status = latest.Metadata().Version().Original() + " available"
 		}
 		description := latest.Metadata().Description()
-		m1 := regexp.MustCompile(`(\\c\[[\d]\])`)
-		description = m1.ReplaceAllString(description, "")
+		description = formatRegex.ReplaceAllString(description, "")
 		if description != "" {
 			status = description + "\n" + status
 		}
